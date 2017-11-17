@@ -6,3 +6,4 @@
 11/15/2017 pm 01:29:32 ::1 C:\wamp\www\ioc\index.php 3  Error connecting to database. Details: -- host localhost -- database copiuta_db -- MySQL error number 1049 -- MySQL error message Unknown database 'copiuta_db'
 11/15/2017 pm 01:29:32 ::1 C:\wamp\www\ioc\index.php 3  Error connecting to database. Details: -- host localhost -- database copiuta_db -- MySQL error number 1049 -- MySQL error message Unknown database 'copiuta_db'
 11/15/2017 pm 01:29:33 ::1 C:\wamp\www\ioc\index.php 3  Error connecting to database. Details: -- host localhost -- database copiuta_db -- MySQL error number 1049 -- MySQL error message Unknown database 'copiuta_db'
+11/18/2017 am 12:03:46 ::1 C:\wamp\www\proiect-ioc\index.php 3  Error connecting to database. Details: -- host localhost -- database iocdb -- MySQL error number 1049 -- MySQL error message Unknown database 'iocdb'

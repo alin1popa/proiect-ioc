@@ -138,6 +138,16 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="mainstyle.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function like(id) {
+                $.post("like.php", {id: id}, function( data ) {
+                    if (data === "true")
+                        $("#liked_container_"+id).html("<p class='liked'>LIKED</p>");
+                });
+            }
+        </script>
 	</head>
 	
 	<body>
@@ -162,11 +172,13 @@
 						$out .= "<div class='multimedia {$item['type']}'>";
 						$out .= "	<p>{$item['name']}</p>";
 						$out .= "	<p>{$item['description']}</p>";
+                        $out .= "   <div id='liked_container_{$item['id']}'>";
 						if (isset($item['liked'])) {
 							$out .= "	<p class='liked'>LIKED</p>";
 						} else {
-							$out .= "	<a>like</a>";
+							$out .= "	<a onClick='like({$item['id']})'>like</a>";
 						}
+                        $out .= "   </div>";
 						$out .= "	<p>Users who like: ";
 						foreach ($item['wholikes'] as $user) {
 							$out .= "$user, ";
