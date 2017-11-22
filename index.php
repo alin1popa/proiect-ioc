@@ -152,7 +152,7 @@
 	
 	<body>
 		<p>Currently logged user: <?php echo $currentuser; ?></p>
-		<p>Your friends: 
+		<p>Your friends are awesome: 
 		<?php
 			foreach ($friends as $friend) {
 				echo $friend . ", ";
