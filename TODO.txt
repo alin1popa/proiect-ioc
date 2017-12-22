@@ -28,5 +28,5 @@
 [DONE]	move display multimedia to js
 []		pagination ( + infiniteLoader? )
 []		don't add non existent users as friends
-[]		implement watched (like likes)
-[]		implement recommend (like likes)
+[DONE]	implement watched (like likes)
+[DONE]	implement recommend (like likes)

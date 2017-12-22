@@ -82,15 +82,29 @@
 			$likeresult = mysqli_query($conn, $likequery);
 			
 			$likearray = Array();
+			$watcharray = Array();
+			$recommendarray = Array();
 			while ($likerow = mysqli_fetch_assoc($likeresult)) {
 				if (strcmp($likerow['username'], $currentuser) == 0) {
-					$row['liked'] = true;
+					if ($likerow['type'] == 0)
+						$row['liked'] = true;
+					else if ($likerow['type'] == 1)
+						$row['watched'] = true;
+					else if ($likerow['type'] == 2)
+						$row['recommended'] = true;
 				}
 				else {
-					array_push($likearray, $likerow['username']);
+					if ($likerow['type'] == 0)
+						array_push($likearray, $likerow['username']);
+					else if ($likerow['type'] == 1)
+						array_push($watcharray, $likerow['username']);
+					else if ($likerow['type'] == 2)
+						array_push($recommendarray, $likerow['username']);
 				}
 			}
-			$row['wholikes'] = $likearray;
+			$row['wholiked'] = $likearray;
+			$row['whowatched'] = $watcharray;
+			$row['whorecommended'] = $recommendarray;
 			
 			mysqli_free_result($likeresult);
 			array_push($array, $row);
