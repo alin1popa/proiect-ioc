@@ -35,11 +35,11 @@ function createMultimediaBox(item) {
 					<span id='likenr_${item['id']}' class='infonr'>${item['wholiked'].length + (item['liked']?1:0)}</span>
 				</div>
 				<div class='infospace'>
-					<img id='watchpic_${item['id']}' src='images/watch_icon${item['watched'] ? '_r' : ''}.png' height=30 class='multimediaicon watchicon' onClick='like(${item['id']}, 1)'/>
+					<img id='watchpic_${item['id']}' src='images/watch_icon${item['watched'] ? '_r' : ''}.jpg' height=30 class='multimediaicon watchicon' onClick='like(${item['id']}, 1)'/>
 					<span id='watchnr_${item['id']}' class='infonr'>${item['whowatched'].length + (item['watched']?1:0)}</span>
 				</div>
 				<div class='infospace'>
-					<img id='recommendpic_${item['id']}' src='images/recommend_icon${item['recommended'] ? '_r' : ''}.png' height=30 class='multimediaicon recommendicon' onClick='like(${item['id']}, 2)'/>
+					<img id='recommendpic_${item['id']}' src='images/recommend_icon${item['recommended'] ? '_r' : ''}.jpg' height=30 class='multimediaicon recommendicon' onClick='like(${item['id']}, 2)'/>
 					<span id='recommendnr_${item['id']}' class='infonr'>${item['whorecommended'].length + (item['recommended']?1:0)}</span>
 				</div>
 			</div>
