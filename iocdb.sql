@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2017 at 10:04 PM
+-- Generation Time: Dec 22, 2017 at 11:33 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -52,16 +52,21 @@ CREATE TABLE IF NOT EXISTS `likes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `multimediaid` int(11) NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `likes`
 --
 
-INSERT INTO `likes` (`id`, `username`, `multimediaid`) VALUES
-(1, 'alin', 2),
-(2, 'robert', 4);
+INSERT INTO `likes` (`id`, `username`, `multimediaid`, `type`) VALUES
+(2, 'robert', 4, 0),
+(3, 'alin', 1, 0),
+(20, 'alin', 2, 0),
+(21, 'anca', 2, 0),
+(26, 'anca', 5, 0),
+(31, 'anca', 4, 2);
 
 -- --------------------------------------------------------
 
