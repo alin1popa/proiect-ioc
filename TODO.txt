@@ -4,7 +4,7 @@
 
 [DONE]	layout general
 [DONE]	design general
-[]		design pagina principala
+[DONE]	design pagina principala
 []		design pagina profil
 []		pagina profil personal (edit)
 []		pagina profil (view)
