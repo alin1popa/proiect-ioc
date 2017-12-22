@@ -27,7 +27,7 @@ function createMultimediaBox(item) {
 				<div class='multimediareason'>Watched by 5 friends</div>
 			</div>
 			<a href="view.php?id=${item['id']}">
-				<img src='https://i.pinimg.com/736x/fd/5e/66/fd5e662dce1a3a8cd192a5952fa64f02--classic-poster-classic-movies-posters.jpg' class='multimediaimg' width=300/>
+				<img src='${item['posterurl']}' class='multimediaimg' width=300/>
 			</a>
 			<div class='multimediainfobar'>
 				<div class='infospace'>

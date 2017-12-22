@@ -64,7 +64,7 @@
 		return "($str)";
 	}
 	
-	function getLatest($count = 5, $type = 7, $orderby = "releasedate", $ordertype = "DESC") {
+	function getLatest($count = 20, $type = 7, $orderby = "releasedate", $ordertype = "DESC") {
 		global $conn;
 		global $currentuser;
 		$array = Array();

@@ -15,10 +15,12 @@
 []		signup page + form + everything
 [DONE]	unlike
 [DONE]	navbar
+[DONE]	multimedia pics
 
 ---OPTIONAL---
 
 []		pagina friends
+[]		recommend reasons
 []		sort by pe pag principala / browse
 []		pagina de browse
 []		recommend to friends
