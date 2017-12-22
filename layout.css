@@ -1,0 +1,13 @@
+
+body {
+	padding-top: 3.5rem;
+	background-color: rgb(20, 20, 20);
+}
+
+.navbar {
+	background-color: black !important;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}

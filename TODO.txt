@@ -1,0 +1,32 @@
+===TODO IOC===
+
+---IMPORTANT---
+
+[DONE]	layout general
+[DONE]	design general
+[]		design pagina principala
+[]		design pagina profil
+[]		pagina profil personal (edit)
+[]		pagina profil (view)
+[]		pagina film (view)
+[]		database of multimedia
+[]		database of likes
+[]		database of users
+[]		signup page + form + everything
+[DONE]	unlike
+[DONE]	navbar
+
+---OPTIONAL---
+
+[]		pagina friends
+[]		sort by pe pag principala / browse
+[]		pagina de browse
+[]		recommend to friends
+[]		link related multimedia
+[]		multimedia sort by score ("you will like this / recommended for you")
+[]		move multimedia requests to ajax
+[DONE]	move display multimedia to js
+[]		pagination ( + infiniteLoader? )
+[]		don't add non existent users as friends
+[]		implement watched (like likes)
+[]		implement recommend (like likes)

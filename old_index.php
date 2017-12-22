@@ -146,27 +146,25 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="layout.css">
 		<link rel="stylesheet" type="text/css" href="multimedia.css">
-        
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-		<script src="functions.js"></script>
 		
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
         <script type="text/javascript">
-			$( document ).ready(function() {
-				var latest = <?php echo json_encode($latest); ?>;
-			
-				latest.forEach((item) => {
-					$(".maincontainer").append(createMultimediaBox(item));
-				});
-			});
+            function like(id) {
+                $.post("like.php", {id: id}, function( data ) {
+                    if (data === "true")
+                        $("#liked_container_"+id).html("<p class='liked'>LIKED</p>");
+                });
+            }
         </script>
 	</head>
 	
 	<body>
 	
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		  <a class="navbar-brand" href="#">RECOMMENDER</a>
+		  <a class="navbar-brand" href="#">Navbar</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		  </button>
@@ -174,17 +172,20 @@
 		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="#">Home</a>
+				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link" href="#">Browse</a>
+				<a class="nav-link" href="#">Link</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link disabled" href="#">Disabled</a>
 			  </li>
 			  <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle capitalize" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $currentuser; ?></a>
+				<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
-				  <a class="dropdown-item" href="#">My profile</a>
-				  <a class="dropdown-item" href="#">My friends</a>
-				  <a class="dropdown-item" href="#">My activity</a>
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <a class="dropdown-item" href="#">Something else here</a>
 				</div>
 			  </li>
 			</ul>
@@ -192,11 +193,55 @@
 			  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 			  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
-			<a class="nav-link" href="logout.php">Log out</a>
 		  </div>
 		</nav>
+	
+		<p>Currently logged user: <?php echo $currentuser; ?></p>
+		<p>Your friends: 
+		<?php
+			foreach ($friends as $friend) {
+				echo $friend . ", ";
+			}
+		?></p>
+		<p><a href="logout.php">Log out</a></p>
+		<?php if (isset($error)) {
+			echo "<p>$error</p>";
+		}
+		?>
 		
-		<div class="maincontainer">
+		<div>
+			<?php
+				if (isset($latest)) {
+					foreach ($latest as $item) {	
+						$out = "";
+						$out .= "<div class='multimedia {$item['type']}'>";
+						$out .= "	<p>{$item['name']}</p>";
+						$out .= "	<p>{$item['description']}</p>";
+                        $out .= "   <div id='liked_container_{$item['id']}'>";
+						if (isset($item['liked'])) {
+							$out .= "	<p class='liked'>LIKED</p>";
+						} else {
+							$out .= "	<a onClick='like({$item['id']})'>like</a>";
+						}
+                        $out .= "   </div>";
+						$out .= "	<p>Users who like: ";
+						foreach ($item['wholikes'] as $user) {
+							$out .= "$user, ";
+						}
+						$out .= "	</p>";
+						$out .= "</div>";
+						
+						echo $out;
+					}
+				}
+			?>
+		</div>
+		
+		<div>
+			<form method="POST" action="index.php">
+				<input type="text" name="username" placeholder="Friend username"/>
+				<input type="submit" name="addfriend" value="Add friend"/>
+			</form>
 		</div>
 	</body>
 </html>
